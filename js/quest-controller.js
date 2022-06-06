@@ -3,6 +3,15 @@
 // NOTE: This is a global used only in the controller
 var gLastRes = null
 
+var gVictoryMsgs = [
+  'Too Easy..',
+  'Knew it..',
+  'Is that the best you got ?',
+  'Give me a Challange Next Time',
+  'Common man..',
+  'Called it',
+]
+
 $(document).ready(init)
 $('.btn-start').click(onStartGuessing)
 $('.btn-yes').click({ ans: 'yes' }, onUserResponse)
@@ -42,6 +51,9 @@ function onUserResponse(ev) {
       // TODO: improve UX
       $('.quest').hide()
       $('.win-container').show()
+      var victoryMsg = getRandomVictoryMsg()
+      $('.victory-msg').text(victoryMsg)
+
       ChangeColorWhenWin(true)
     } else {
       // TODO: hide and show new-quest section
@@ -109,3 +121,7 @@ $('button').on('click', e => {
   $(e.target).addClass('btn-clicked')
   setTimeout(() => $(e.target).removeClass('btn-clicked'), 300)
 })
+
+function getRandomVictoryMsg() {
+  return gVictoryMsgs[getRandomArbitrary(0, gVictoryMsgs.length - 1)]
+}

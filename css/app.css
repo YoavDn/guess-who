@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
 body {
   display: flex;
   flex-direction: column;
@@ -52,7 +53,7 @@ main {
   align-items: center;
   /* justify-content: center; */
   text-align: center;
-  padding: 3rem;
+  padding: 2rem;
   box-shadow: 16px 10px var(--main-color);
 }
 
@@ -134,8 +135,8 @@ button.btn {
   background-color: var(--soft-purple);
 }
 .win-lamp {
-  margin-top: 1rem;
-  width: 8rem;
+  margin-top: 2rem;
+  width: 10rem;
   transform: rotateY(-180deg);
 }
 
@@ -144,6 +145,12 @@ button.btn {
   animation-duration: 0.1s;
   animation-iteration-count: 1;
 }
+.win-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 
 @keyframes btn-click {
   from {
@@ -151,5 +158,51 @@ button.btn {
   }
   to {
     transform: translateY(3px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .lamp {
+    display: none;
+  }
+  body {
+    background-color: var(--main-color);
+  }
+  header {
+    width: 80%;
+    margin: auto;
+    font-size: 1.9rem;
+  }
+  main {
+    border: none;
+    box-shadow: none;
+    background-color: var(--main-color);
+    color: var(--main-bg);
+
+    width: 70%;
+    font-size: 1rem;
+  }
+  button.btn {
+    font-size: 1rem;
+  }
+  .btn {
+    color: var(--main-bg);
+    border: var(--main-bg) solid 1px;
+    box-shadow: 2px 3px var(--main-bg);
+  }
+  .btn-no,
+  .btn-yes {
+    width: 100px;
+    margin-left: 6px;
+  }
+
+  .win-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+  }
+  .new-game-btn {
+    order: 1;
   }
 }
