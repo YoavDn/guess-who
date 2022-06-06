@@ -1,52 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 body {
   display: flex;
+  flex-direction: column;
   margin: 0;
   min-height: 100vh;
   flex-direction: column;
+  font-family: 'Paytone One', sans-serif;
+  background-color: var(--main-bg);
 }
 
 :root {
   --main-bg: #fffcf2;
   --main-color: #252422;
   --orange: #eb5e28;
+  --soft-orange: #f1794a;
   --grey: #403d39;
+  --silver: #ccc5b9;
+  --purple: #6665dd;
+  --soft-purple: #7c7bdee7;
 }
 
 header {
+  display: flex;
+  width: 40%;
+  margin: auto;
   text-align: center;
-  color: #fcf064;
+  color: var(--orange);
+  align-items: center;
   font-size: 3em;
-  height: 400px;
+  justify-content: space-evenly;
 }
 
 footer {
-  background-color: black;
   text-align: center;
-  color: lightblue;
+  color: var(--orange);
+  font-size: 1.3rem;
+  padding: 2rem;
 }
 
 main {
+  width: 40%;
+  margin: auto;
+  background-color: var(--silver);
+
+  font-size: 1.5rem;
+  color: var(--main-color);
   flex: 1;
+  border: var(--main-color) solid 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   text-align: center;
+  padding: 3rem;
+  box-shadow: 16px 10px var(--main-color);
 }
 
 header h1 {
   font-size: 1.5em;
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+.new-quest h2 {
+  font-size: 1.8rem;
 }
 
 .ending-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.4rem;
 }
 .ending-form input {
   margin: 10px;
-  font-size: 1em;
+  font-size: 1rem;
 }
 .ending-form label {
   font-weight: bold;
@@ -57,28 +84,72 @@ label {
   width: 300px;
 }
 
-.btn {
-  width: 100px;
-  height: 40px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  font-size: 0.8em;
-  cursor: pointer;
+button.btn {
+  font-size: 1.3rem;
 }
-.btn-start {
-  background-color: #ffc107;
+
+.btn {
+  width: 140px;
+  height: 50px;
+  cursor: pointer;
+  color: var(--main-color);
+  background-color: var(--orange);
+  font-family: 'Paytone One', sans-serif;
+  font-size: 1rem;
+  border: var(--main-color) solid 3px;
+  box-shadow: 5px 6px var(--main-color);
+}
+
+.btn:hover {
+  background-color: var(--soft-orange);
 }
 .btn-yes {
   background-color: #28a745;
 }
-
+.btn-yes:hover {
+  background-color: #4ec069;
+}
 .btn-no {
   background-color: #ff0018;
 }
 
 .btn-add-guess {
-  background-color: #fd7e14;
+  background-color: var(--orange);
   width: 250px;
-  color: white;
+  color: var(--main-bg);
+}
+
+.lamp {
+  width: 5rem;
+  transform: translateY(-30%);
+}
+
+.new-game-btn {
+  display: block;
+  margin: auto;
+  background-color: var(--purple);
+}
+
+.new-game-btn:hover {
+  background-color: var(--soft-purple);
+}
+.win-lamp {
+  margin-top: 1rem;
+  width: 8rem;
+  transform: rotateY(-180deg);
+}
+
+.btn-clicked {
+  animation-name: btn-click;
+  animation-duration: 0.1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes btn-click {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(3px);
+  }
 }

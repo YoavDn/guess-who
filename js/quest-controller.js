@@ -8,6 +8,7 @@ $('.btn-start').click(onStartGuessing)
 $('.btn-yes').click({ ans: 'yes' }, onUserResponse)
 $('.btn-no').click({ ans: 'no' }, onUserResponse)
 $('.btn-add-guess').click(onAddGuess)
+$('.new-game-btn').on('click', onRestartGame)
 
 function init() {
   console.log('Started...')
@@ -19,6 +20,7 @@ function onStartGuessing() {
   $('.game-start').hide()
 
   renderQuest()
+
   // TODO: show the quest section
   $('.quest').fadeIn('fast')
 }
@@ -37,8 +39,10 @@ function onUserResponse(ev) {
 
   if (isChildless(getCurrQuest())) {
     if (res === 'yes') {
-      alert('Yes, I knew it!')
       // TODO: improve UX
+      $('.quest').hide()
+      $('.win-container').show()
+      ChangeColorWhenWin(true)
     } else {
       // TODO: hide and show new-quest section
       $('.quest').hide()
@@ -64,6 +68,11 @@ function onAddGuess(ev) {
   var newGuess = $('#newGuess').val()
   var newQuest = $('#newQuest').val()
 
+  if (!newGuess || !newQuest) {
+    alert('Not valid Input !')
+    return
+  }
+
   // TODO: Get the inputs' values
   console.log(newGuess, newQuest)
   // console.log(getCurrQuest())
@@ -78,7 +87,25 @@ function onAddGuess(ev) {
 
 function onRestartGame() {
   $('.new-quest').hide()
+  $('.win-container').hide()
   $('.game-start').show()
+  ChangeColorWhenWin()
   gLastRes = null
   restartGame()
 }
+
+function ChangeColorWhenWin(isWin = false) {
+  if (isWin) {
+    $('h1').css('color', 'var(--purple)')
+    $('footer').css('color', 'var(--purple)')
+  } else {
+    $('h1').css('color', 'var(--orange)')
+    $('footer').css('color', 'var(--orange)')
+  }
+}
+
+$('button').on('click', e => {
+  console.log(e.target)
+  $(e.target).addClass('btn-clicked')
+  setTimeout(() => $(e.target).removeClass('btn-clicked'), 300)
+})
